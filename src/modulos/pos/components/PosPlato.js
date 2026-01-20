@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { agregarPlatoAction } from '../../../redux/actions/pedidoAction';
+import Swal from 'sweetalert2';
 
 const PosPlato = ({ objPlato }) => {
 	const dispatch = useDispatch();
@@ -11,6 +12,11 @@ const PosPlato = ({ objPlato }) => {
 			dispatch(agregarPlatoAction(objPlato, idMesaSeleccionada));
 		} else {
 			// TO DO lanzar notificación de warning para el cliente
+			Swal.fire({
+				icon: 'error',
+				title: 'Ups!',
+				text: 'Debes seleccionar una mesa primero'
+			});
 		}
 	};
 
