@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { URL_BACKEND } from '../../environments/environments';
+// import axios from 'axios';
+// import { URL_BACKEND } from '../../environments/environments';
 import {
 	FIN_CARGANDO_CATEGORIAS,
 	INICIO_CARGANDO_CATEGORIAS,
@@ -17,12 +17,23 @@ export const getCategorias = () => {
 	return async (dispatch) => {
 		dispatch(setCargandoCategorias());
 
-		const endpoint = `${URL_BACKEND}/categoria`;
-		const response = await axios.get(endpoint);
+		// const endpoint = `${URL_BACKEND}/categoria`;
+		// const response = await axios.get(endpoint);
+
+		// MOCK: Leer de localStorage
+		const localDB = localStorage.getItem('mockDB_v7');
+		let categorias = [];
+		if (localDB) {
+			const db = JSON.parse(localDB);
+			categorias = db.categorias || [];
+		}
+
 		dispatch({
 			type: SET_CATEGORIAS,
-			payload: response.data.content
+			payload: categorias
 		});
+
+		// console.log('CATEGORIAS DESDE DB', categorias);
 
 		dispatch(setFinCargandoCategorias());
 	};

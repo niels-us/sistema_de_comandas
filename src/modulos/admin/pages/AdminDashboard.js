@@ -70,8 +70,8 @@ const AdminDashboard = () => {
 							<h4 className="card-title">Platos</h4>
 							<h5 className="display-4 text-center">
 								{cargandoPlatos ? (
-									<div class="spinner-border text-light" role="status">
-										<span class="sr-only">Loading...</span>
+									<div className="spinner-border text-light" role="status">
+										<span className="sr-only">Loading...</span>
 									</div>
 								) : (
 									platos.length

@@ -3,7 +3,8 @@ import {
 	ELIMINAR_PEDIDO,
 	FIN_CARGANDO_PEDIDOS_DB,
 	INICIO_CARGANDO_PEDIDOS_DB,
-	SET_PEDIDOS_DB
+	SET_PEDIDOS_DB,
+	RESTAR_PLATO_A_PEDIDO
 } from '../types/types';
 
 const initialState = {
@@ -90,6 +91,42 @@ export const pedidoReducer = (state = initialState, action) => {
 			return {
 				...state,
 				pedidos: pedidosState
+			};
+
+		case RESTAR_PLATO_A_PEDIDO:
+			let pedidosStateRestar = [...state.pedidos];
+			let posicionPedidoRestar = pedidosStateRestar.findIndex(
+				(objPedido) => objPedido.mesaId === action.payload.mesaId
+			);
+
+			if (posicionPedidoRestar >= 0) {
+				let posicionPlatoRestar = pedidosStateRestar[
+					posicionPedidoRestar
+				].platos.findIndex(
+					(objPlato) => objPlato.plato_id === action.payload.objPlato.plato_id
+				);
+
+				if (posicionPlatoRestar >= 0) {
+					if (
+						pedidosStateRestar[posicionPedidoRestar].platos[posicionPlatoRestar]
+							.cantidad > 1
+					) {
+						pedidosStateRestar[posicionPedidoRestar].platos[
+							posicionPlatoRestar
+						].cantidad -= 1;
+					} else {
+						// Si la cantidad es 1, eliminamos el plato
+						pedidosStateRestar[posicionPedidoRestar].platos.splice(
+							posicionPlatoRestar,
+							1
+						);
+					}
+				}
+			}
+
+			return {
+				...state,
+				pedidos: pedidosStateRestar
 			};
 
 		case ELIMINAR_PEDIDO:

@@ -29,6 +29,7 @@ export const categoriaReducer = (state = initialState, action) => {
 				cargandoCategorias: false
 			};
 		case SET_CATEGORIAS:
+			console.log('REDUCER SET_CATEGORIAS', action.payload);
 			return {
 				...state,
 				categorias: action.payload

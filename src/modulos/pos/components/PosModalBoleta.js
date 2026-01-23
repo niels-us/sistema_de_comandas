@@ -38,7 +38,7 @@ const PosModalBoleta = ({ mostrar, setMostrar }) => {
 					Swal.fire({
 						icon: 'success',
 						title: 'Éxito!',
-						text: 'Pedido pagado con éxito'
+						text: 'Su pedido ha sido cancelado exitosamente'
 					});
 				}
 
@@ -119,28 +119,28 @@ const PosModalBoleta = ({ mostrar, setMostrar }) => {
 										</thead>
 										<tbody>
 											{objPedidoActual
-												? objPedidoActual.platos.map((objPlatoPedido) => {
-														return (
-															<tr>
-																<td>
-																	<span className="text-inverse">
-																		{objPlatoPedido.plato_nom}
-																	</span>
-																</td>
-																<td className="text-center">
-																	S/ {objPlatoPedido.plato_pre}
-																</td>
-																<td className="text-center">
-																	{objPlatoPedido.cantidad}
-																</td>
-																<td className="text-right">
-																	S/{' '}
-																	{+objPlatoPedido.plato_pre *
-																		+objPlatoPedido.cantidad}
-																</td>
-															</tr>
-														);
-												  })
+												? objPedidoActual.platos.map((objPlatoPedido, index) => {
+													return (
+														<tr key={index}>
+															<td>
+																<span className="text-inverse">
+																	{objPlatoPedido.plato_nom}
+																</span>
+															</td>
+															<td className="text-center">
+																S/ {objPlatoPedido.plato_pre}
+															</td>
+															<td className="text-center">
+																{objPlatoPedido.cantidad}
+															</td>
+															<td className="text-right">
+																S/{' '}
+																{+objPlatoPedido.plato_pre *
+																	+objPlatoPedido.cantidad}
+															</td>
+														</tr>
+													);
+												})
 												: null}
 										</tbody>
 									</table>

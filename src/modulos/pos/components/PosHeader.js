@@ -7,11 +7,11 @@ const PosHeader = () => {
 	return (
 		<header className="header">
 			<div className="header__logo">
-				{/* <img src={miImagen} alt="" /> */}
-				<img src="/images/logo.svg" alt="" />
+				<img src={`${process.env.PUBLIC_URL}/images/logo.svg`} />
 			</div>
 			<div className="header__buscador">
-				<img src="/images/search.svg" alt="" />
+				<img src={`${process.env.PUBLIC_URL}/images/search.svg`} />
+
 				<input
 					type="text"
 					className="header__input"

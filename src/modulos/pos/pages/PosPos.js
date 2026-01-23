@@ -14,6 +14,7 @@ const PosPos = () => {
 	useEffect(() => {
 		dispatch(getCategorias());
 		dispatch(getMesas());
+		// console.log('DISPATCH POSPOS');
 	}, [dispatch]);
 
 	return (

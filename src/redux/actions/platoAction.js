@@ -1,4 +1,3 @@
-import { URL_BACKEND } from '../../environments/environments';
 import {
 	FIN_CARGANDO_PLATOS,
 	FIN_CARGANDO_PLATOS_POR_CATEGORIA,
@@ -7,7 +6,6 @@ import {
 	SET_PLATOS,
 	SET_PLATOS_POR_CATEGORIA
 } from '../types/types';
-import axios from 'axios';
 
 const setCargandoPlatosPorCategoria = () => {
 	return {
@@ -33,11 +31,21 @@ export const getPlatosPorCategoriaId = (categoriaId) => {
 	return async (dispatch) => {
 		dispatch(setCargandoPlatosPorCategoria());
 
-		const endpoint = `${URL_BACKEND}/categoria/${categoriaId}/platos`;
-		const response = await axios.get(endpoint);
+
+		// const endpoint = `${URL_BACKEND}/categoria/${categoriaId}/platos`;
+		// const response = await axios.get(endpoint);
+
+		// MOCK: Leer de localStorage
+		const localDB = localStorage.getItem('mockDB_v7');
+		let platos = [];
+		if (localDB) {
+			const db = JSON.parse(localDB);
+			platos = db.platos.filter(p => p.categoria_id === +categoriaId) || [];
+		}
+
 		dispatch({
 			type: SET_PLATOS_POR_CATEGORIA,
-			payload: response.data.content.Platos
+			payload: platos
 		});
 
 		dispatch(setFinCargandoPlatosPorCategoria());
@@ -48,12 +56,21 @@ export const getPlatos = () => {
 	return async (dispatch) => {
 		dispatch(setInicioCargandoPlatos());
 
-		const endpoint = `${URL_BACKEND}/plato`;
-		const response = await axios.get(endpoint);
-		console.log(response);
+		// const endpoint = `${URL_BACKEND}/plato`;
+		// const response = await axios.get(endpoint);
+		// console.log(response);
+
+		// MOCK: Leer de localStorage
+		const localDB = localStorage.getItem('mockDB_v7');
+		let platos = [];
+		if (localDB) {
+			const db = JSON.parse(localDB);
+			platos = db.platos || [];
+		}
+
 		dispatch({
 			type: SET_PLATOS,
-			payload: response.data.content
+			payload: platos
 		});
 
 		dispatch(setFinCargandoPlatos());

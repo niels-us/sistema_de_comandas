@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
-import axios from 'axios';
-import { URL_BACKEND } from '../environments/environments';
+// import axios from 'axios';
+// import { URL_BACKEND } from '../environments/environments';
 
 export const postPagarPedido = async (objPedido, mesaId) => {
 	let objPedidoBackend = {
@@ -17,15 +17,32 @@ export const postPagarPedido = async (objPedido, mesaId) => {
 			};
 		})
 	};
-	const endpoint = `${URL_BACKEND}/pedido`;
-	const response = await axios.post(
-		endpoint,
-		JSON.stringify(objPedidoBackend),
-		{
-			headers: {
-				'Content-type': 'application/json'
+	// SIMULACIÓN DE BACKEND
+	// const endpoint = `${URL_BACKEND}/pedido`;
+	// const response = await axios.post(
+	// 	endpoint,
+	// 	JSON.stringify(objPedidoBackend),
+	// 	{
+	// 		headers: {
+	// 			'Content-type': 'application/json'
+	// 		}
+	// 	}
+	// );
+	// return response.data;
+
+	// Simular respuesta exitosa despues de 1 segundo
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			// ACTUALIZACION MOCK PARA PERSISTENCIA
+			const localDB = localStorage.getItem('mockDB_v7');
+			if (localDB) {
+				const db = JSON.parse(localDB);
+				if (!db.pedidos) db.pedidos = [];
+				db.pedidos.push(objPedidoBackend);
+				localStorage.setItem('mockDB_v7', JSON.stringify(db));
 			}
-		}
-	);
-	return response.data;
+
+			resolve({ ok: true, message: 'Pedido pagado exitosamente (MOCK)' });
+		}, 1000);
+	});
 };

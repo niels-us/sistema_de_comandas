@@ -4,18 +4,20 @@
 // @import "./tabla";
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
+
 ul {
 	list-style: none;
 	padding: 0;
 }
 
-body {
-}
+body {}
+
 .color-secundario {
 	color: $color-secundario;
 }
@@ -25,21 +27,26 @@ body {
 	height: 60px;
 	background-color: $fondo;
 	font-family: 'Poppins', sans-serif;
+
 	&__logo {
+		margin-left: 15px;
 		max-width: 80px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		img {
 			max-height: calc(100% - 10px);
 		}
 	}
+
 	&__buscador {
 		padding-left: 50px;
 		flex: 1;
 		display: flex;
-		img {
-		}
+
+		img {}
+
 		input {
 			flex: 1;
 			background-color: $fondo;
@@ -50,6 +57,7 @@ body {
 			font-size: 1.2rem;
 		}
 	}
+
 	&__usuario {
 		color: $color-texto;
 		display: flex;
@@ -60,13 +68,21 @@ body {
 		img {
 			height: calc(100% - 10px);
 			border-radius: 50%;
+			margin-left: 15px;
 		}
+
+		span {
+			margin-left: 10px;
+		}
+
 	}
 }
+
 .pos-container {
 	display: flex;
 	background-color: $fondo;
 	font-family: 'Poppins', sans-serif;
+
 	.menu {
 		//nav
 		width: 80px;
@@ -74,11 +90,13 @@ body {
 		height: calc(100vh - 60px);
 		display: flex;
 		padding-top: 50px;
+
 		&__lista {
 			//ul
 			display: flex;
 			flex-direction: column;
 			flex: 1;
+
 			li {
 				cursor: pointer;
 				display: flex;
@@ -87,18 +105,23 @@ body {
 				align-items: center;
 				color: $color-texto;
 				margin-bottom: 40px;
+
 				img {
 					width: 2.5rem;
 				}
+
 				span {
+					text-align: center;
 					margin-top: 5px;
 					font-size: 0.8rem;
 				}
+
 				&:hover {
 					color: $color-secundario;
 					border-left: 4px solid $color-secundario;
 					// transform: translate(-4px, 0);
 				}
+
 				&.active {
 					color: $color-secundario;
 					border-left: 4px solid $color-secundario;
@@ -106,6 +129,7 @@ body {
 			}
 		}
 	}
+
 	.tabla {
 		flex: 1;
 		border: 1px solid darken($color: $color-texto, $amount: 50%);
@@ -117,9 +141,12 @@ body {
 			height: 80px;
 			// border: 1px solid white;
 			display: flex;
+
 			&__lista {
 				display: flex;
 				width: 80%;
+				height: 90%;
+
 				li {
 					cursor: pointer;
 					display: flex;
@@ -128,13 +155,20 @@ body {
 					align-items: center;
 					flex: 1;
 					max-width: 100px;
+
+					.mesas__titulo {
+						margin-top: 12px;
+					}
+
 					// border: 1px solid green;
 					.mesas__numero {
 						font-size: 2rem;
 					}
+
 					&:hover {
 						background-color: lighten($color: $fondo, $amount: 5%);
 					}
+
 					&.activo {
 						background-color: lighten($color: $fondo, $amount: 5%);
 						border-bottom: 4px solid $color-secundario;
@@ -142,13 +176,16 @@ body {
 				}
 			}
 		}
+
 		.pedido {
 			padding: 20px;
 			flex: 1;
 			background-color: lighten($color: $fondo, $amount: 5%);
 			display: flex;
+
 			.carta {
 				flex: 1;
+
 				h3 {
 					height: 60px;
 					display: flex;
@@ -158,10 +195,12 @@ body {
 					color: white;
 					text-align: center;
 					padding: 8px;
+
 					span {
 						font-size: 2rem;
 					}
 				}
+
 				&__botones {
 					width: 100%;
 					height: 100%;
@@ -173,11 +212,13 @@ body {
 					left: 50%;
 					transform: translate(-50%, -50%);
 				}
+
 				&__platos {
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: space-evenly;
 				}
+
 				&__plato {
 					overflow: hidden;
 					position: relative;
@@ -194,21 +235,26 @@ body {
 					margin: 5px;
 					height: 200px;
 					padding: 10px;
+
 					img {
 						max-height: 50%;
 						max-width: 100%;
 						transition: all 0.5s ease;
 					}
+
 					* {
 						margin-bottom: 5px;
 					}
+
 					&:hover {
 						img {
 							margin-bottom: 50px;
 							max-height: 30%;
 						}
+
 						background-color: $color-secundario;
 						color: white;
+
 						.boton-sumar,
 						.boton-restar {
 							width: 70px;
@@ -216,6 +262,7 @@ body {
 							font-size: 1.5rem;
 							color: white;
 						}
+
 						.boton-sumar:hover,
 						.boton-restar:hover {
 							background-color: transparent;
@@ -225,8 +272,10 @@ body {
 					}
 				}
 			}
+
 			.boleta {
 				width: 400px;
+
 				h3 {
 					height: 60px;
 					display: flex;
@@ -236,10 +285,12 @@ body {
 					color: white;
 					text-align: center;
 					padding: 8px;
+
 					span {
 						font-size: 2rem;
 					}
 				}
+
 				.comanda {
 					background-color: #eee;
 					background: url('./../assets/images/comanda.png') no-repeat;
@@ -249,8 +300,9 @@ body {
 					padding: 25px 15px 10px 40px;
 
 					box-shadow: 0px 4px 10px #666;
-					&__lista {
-					}
+
+					&__lista {}
+
 					&__item {
 						margin: 10px 0;
 						display: flex;
@@ -258,19 +310,23 @@ body {
 						padding: 5px;
 						border-radius: 8px;
 					}
+
 					&__item:nth-child(odd) {
 						background-color: #ebebeb;
 					}
+
 					&__nombre {
 						flex: 50%;
 						display: flex;
 						flex-direction: column;
+
 						// line-height: 1.1rem;
 						span:nth-child(2) {
 							margin-top: -5px;
 							font-size: 0.9rem;
 						}
 					}
+
 					&__cantidad,
 					&__precio {
 						flex: 25%;
@@ -281,6 +337,7 @@ body {
 		}
 	}
 }
+
 .boton {
 	height: 40px;
 	outline: none;
@@ -290,15 +347,19 @@ body {
 	cursor: pointer;
 	color: white;
 	background-color: transparent;
+
 	&-primary {
 		background-color: $color-secundario;
 	}
+
 	&-success {
 		background-color: $color-success;
 	}
+
 	&-outline-primary {
 		border: 1px solid $color-secundario;
 		color: $color-secundario;
+
 		&:hover,
 		&.activo {
 			background-color: $color-secundario;
@@ -417,7 +478,7 @@ body {
 	font-size: 85%;
 }
 
-.invoice > div:not(.invoice-footer) {
+.invoice>div:not(.invoice-footer) {
 	margin-bottom: 20px;
 }
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -6,9 +5,12 @@ import './sass/index.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { store } from './redux/store/store';
+import { HashRouter } from 'react-router-dom';
+import { loadDB } from './mocks/db';
+
+loadDB();
 
 async function enableMocking() {
-	// Iniciamos el worker siempre (para demo en GH Pages)
 	const { worker } = await import('./mocks/browser');
 	return worker.start({
 		onUnhandledRequest: 'bypass',
@@ -21,7 +23,9 @@ async function enableMocking() {
 enableMocking().then(() => {
 	ReactDOM.render(
 		<Provider store={store}>
-			<App />
+			<HashRouter>
+				<App />
+			</HashRouter>
 		</Provider>,
 		document.getElementById('root')
 	);

@@ -5,7 +5,7 @@ import { iniciarSesionAction } from '../../../redux/actions/authAction';
 
 const AuthLogin = (props) => {
 	const dispatch = useDispatch();
-	const { autenticado, cargando } = useSelector((state) => state.auth);
+	const { autenticado } = useSelector((state) => state.auth);
 
 	if (autenticado) {
 		props.history.push('/admin/dashboard');

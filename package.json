@@ -1,5 +1,6 @@
 {
   "name": "proyecto-final-pos",
+  "homepage": "https://niels-us.github.io/punto-de-venta",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

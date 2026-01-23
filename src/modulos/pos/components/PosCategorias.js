@@ -9,6 +9,9 @@ const PosCategorias = () => {
 		(state) => state.categoria
 	);
 
+	// console.log('STATE CATEGORIA', { categorias, cargandoCategorias });
+
+
 	return (
 		<nav className="menu">
 			<ul className="menu__lista">
